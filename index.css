@@ -1,0 +1,92 @@
+/* Import a Google Font (optional, but gives a similar feel) */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Lato:wght@400;700&display=swap');
+
+body {
+    /* Sets the base font for the page */
+    font-family: 'Lato', sans-serif;
+}
+
+.csb-footer {
+    background-color: #4a3f3a; /* Dark brown background */
+    color: #e0dcd7;           /* Light beige text */
+    font-size: 0.95rem;
+    padding-top: 1.5rem;
+}
+
+.csb-footer .footer-heading {
+    font-family: 'Merriweather', serif; /* Serif font for headings */
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #ffffff; /* Brighter white for headings */
+    margin-bottom: 1.5rem;
+}
+
+/* --- Column 1: Logo & Hours --- */
+.csb-footer .footer-logo {
+    max-width: 200px; /* Adjust as needed */
+    height: auto;
+}
+
+.csb-footer .hours-list li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+/* --- Columns 2 & 3: Links --- */
+.csb-footer .footer-links li {
+    margin-bottom: 0.75rem;
+}
+
+.csb-footer .footer-links a,
+.csb-footer p a {
+    text-decoration: none;
+    color: #e0dcd7;
+    transition: color 0.3s ease;
+}
+
+.csb-footer .footer-links a:hover,
+.csb-footer p a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+/* --- Column 4: Address & Contact --- */
+.csb-footer p {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+/* --- Dividers & Copyright --- */
+.csb-footer .footer-divider {
+    border-color: #6e605a; /* Slightly lighter brown for dividers */
+    opacity: 0.5;
+}
+
+.csb-footer .copyright-text {
+    font-size: 0.85rem;
+    color: #b0a6a1;
+}
+
+/* --- Social Icons --- */
+.csb-footer .social-icons a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #6e605a;
+    border-radius: 50%;
+    color: #e0dcd7;
+    text-decoration: none;
+    margin-left: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.csb-footer .social-icons a:hover {
+    background-color: #ffffff;
+    color: #4a3f3a;
+    border-color: #ffffff;
+}

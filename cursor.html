@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+.cursor-blob {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 200px;
+    pointer-events: none;
+    z-index: 2;
+    filter: blur(90px);
+    will-change: transform;
+    mix-blend-mode: lighten;
+
+    /* Smooth multi-color neon gradient */
+    background: radial-gradient(circle at 40% 40%, 
+        rgba(0, 207, 255, 0.75) 15%,   /* Electric Blue */
+        rgba(0, 255, 163, 0.65) 35%,   /* Neon Green */
+        rgba(255, 30, 158, 0.6) 60%,   /* Vibrant Magenta */
+        rgba(107, 71, 255, 0.5) 85%,   /* Deep Violet */
+        rgba(56, 189, 248, 0.4) 100%   /* Soft Cyan Glow */
+    );
+    border-radius: 50% 40% 60% 50% / 45% 55% 40% 60%;
+}
+
+/* Enhancing depth with layered glows */
+.cursor-blob::before, .cursor-blob::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    filter: blur(140px);
+    opacity: 0.85;
+    mix-blend-mode: overlay;
+}
+
+.cursor-blob::before {
+    background: radial-gradient(circle at 80% 20%, 
+        rgba(0, 255, 230, 0.5) 20%,   /* Neon Aqua */
+        rgba(255, 30, 150, 0.4) 80%   /* Hot Pink */
+    );
+    animation: blobPulse 6s infinite ease-in-out;
+}
+
+.cursor-blob::after {
+    background: radial-gradient(circle at 30% 70%, 
+        rgba(0, 250, 200, 0.4) 25%,   /* Soft Teal */
+        rgba(255, 80, 210, 0.4) 80%   /* Bright Magenta */
+    );
+    animation: blobPulse 7s infinite ease-in-out reverse;
+}
+
+/* Subtle breathing effect */
+@keyframes blobPulse {
+    0% { transform: scale(1); opacity: 0.7; }
+    50% { transform: scale(1.05); opacity: 0.85; }
+    100% { transform: scale(1); opacity: 0.7; }
+}
+</style>
+</head>
+<body>
+    <div class="cursor-blob"></div>
+
+
+<script>
+window.onload = function () {
+    const blob = document.querySelector(".cursor-blob");
+
+    let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+    let blobX = mouseX, blobY = mouseY;
+
+    document.addEventListener("mousemove", (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+
+    function followCursor() {
+        blobX += (mouseX - blobX) * 0.4;  // Slower delay for smoother effect
+        blobY += (mouseY - blobY) * 0.4;
+
+        blob.style.left = `${blobX - 250}px`;
+        blob.style.top = `${blobY - 250}px`;
+
+        requestAnimationFrame(followCursor);
+    }
+
+    followCursor();
+};
+</script>
+</body>
+</html>
